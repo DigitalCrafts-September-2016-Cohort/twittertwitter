@@ -12,6 +12,24 @@ app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost/twittertwitter');
 
+//database schema
+var User = mongoose.model('User', {
+  screen_name: { type: String, maxlength: 20, validate: /[a-zA-Z0-9_]+/, required: true},
+  password: { type: String, minlength: 6, required: true },
+  created_at: Date,
+  name: { type: String, minlength: 1, maxlength: 20, required: true }, //20 chars
+  location: String,
+  url: String,
+  description: String
+});
+
+var Tweets = mongoose.model('Tweet', {
+  text: { type: String, minlength: 1, maxlength: 140, required: true},
+  likes: Number,
+  created_at: Date,
+  user: String
+});
+
 //Testing
 app.get('/world', function(request, response){
     console.log(request);
