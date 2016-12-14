@@ -1,10 +1,11 @@
 var express = require('express');
-// var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt'); //maybe use bcrypt-promise
 // var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var bluebird = require('bluebird');
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
+//use uuid
 
 var app = express();
 app.use(express.static('public'));
@@ -30,6 +31,11 @@ var Tweets = mongoose.model('Tweet', {
   user: String
 });
 
+var Follows = mongoose.model('Follow', {
+  you: String,
+  other: String
+});
+
 //Testing
 app.get('/world', function(request, response){
 
@@ -40,10 +46,43 @@ app.get('/world', function(request, response){
     .catch(function(err) {
         response.status(500);
     });
-    // console.log(Tweets.find({}));
-    // response.json(Tweets.find({}));
 });
 
+app.post('/signup', function(request,response) {
+  //signup
+});
+
+app.post('/login', function(request, response) {
+  //login
+});
+
+
+//Everything below needs auth
+
+//user home
+app.get('/user_home', function(request, response) {
+
+});
+
+//user page
+app.get('/user/id', function(request, response) {
+
+});
+
+//tweets
+app.get('/compose_tweet', function(request, response) {
+
+});
+
+app.post('/compose_tweet', function(request, response) {
+
+});
+
+
+//logout
+app.post('/logout', function(request, response) {
+
+});
 
 
 app.listen(3000, function (){
