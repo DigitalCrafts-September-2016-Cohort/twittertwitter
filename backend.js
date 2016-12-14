@@ -10,10 +10,10 @@ var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/twittertwitter');
+mongoose.connect('mongodb://jesslyn_autumn:jesslyn_autumn@ds133368.mlab.com:33368/twittertwitter');
 
 //database schema
-var User = mongoose.model('User', {
+var Users = mongoose.model('User', {
   screen_name: { type: String, maxlength: 20, validate: /[a-zA-Z0-9_]+/, required: true},
   password: { type: String, minlength: 6, required: true },
   created_at: Date,
@@ -32,13 +32,16 @@ var Tweets = mongoose.model('Tweet', {
 
 //Testing
 app.get('/world', function(request, response){
-    console.log(request);
-    var test1 = {
-        prop1: 'property 1',
-        prop2: 'property 2',
-        prop3: 'property 3'
-    };
-    response.json(test1);
+
+    Tweets.find({})
+    .then(function(docs){
+        response.json(docs);
+    })
+    .catch(function(err) {
+        response.status(500);
+    });
+    // console.log(Tweets.find({}));
+    // response.json(Tweets.find({}));
 });
 
 
