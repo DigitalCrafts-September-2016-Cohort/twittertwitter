@@ -36,6 +36,10 @@ var Follows = mongoose.model('Follow', {
   other: String
 });
 
+function auth(request, response, next) {
+
+}
+
 //Testing
 app.get('/world', function(request, response){
 
@@ -49,7 +53,20 @@ app.get('/world', function(request, response){
 });
 
 app.post('/signup', function(request,response) {
-  //signup
+    //signup
+    //grab other form fields
+    var password = request.body.password;
+    bcrypt.hash(password, 12, function(err, hash) {
+        Users.update({}).then(function(){
+
+            ///give boolean to front end that changes state
+
+
+        })
+        .catch(function(){
+            response.status(401);
+        });
+    });
 });
 
 app.post('/login', function(request, response) {
@@ -58,6 +75,8 @@ app.post('/login', function(request, response) {
 
 
 //Everything below needs auth
+
+app.use(auth);
 
 //user home
 app.get('/user_home', function(request, response) {
