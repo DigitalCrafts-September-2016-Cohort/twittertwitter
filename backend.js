@@ -22,8 +22,8 @@ var Users = mongoose.model('User', {
   location: String,
   url: String,
   description: String,
-  following: { type: String},
-  followers: { type: String}
+  following: { type: [String]},
+  followers: { type: [String]}
 });
 
 var Tweets = mongoose.model('Tweet', {
@@ -74,19 +74,29 @@ app.post('/login', function(request, response) {
 
 //Everything below needs auth
 
-app.use(auth);
+// app.use(auth);
 
 //user home
 app.get('/user_timeline', function(request, response) {
-  Users.find({ you: screen_name })
+  var screen_name = 'jesslyn';
+  Tweets.find({ user: screen_name}).then(function(docs) {
+    console.log(docs);
+  });
+  // console.log(Tweets.find({}));
+  Users.find({ screen_name: screen_name })
     .then(function(user) {
+      console.log(user);
+      console.log(user[0].following);
+      console.log(user[0].following.concat([user[0].screen_name]));
+
       return Tweets.find({
-        userID: {
-          $in: user.following.concat([user.screen_name])
+        user: {
+          $in: user[0].following.concat([user[0].screen_name])
         }
       });
     })
     .then(function(tweets) {
+      console.log(tweets);
       response.json(tweets);
     });
 });

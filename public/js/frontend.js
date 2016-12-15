@@ -68,7 +68,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'userLikes.html',
       controller: 'UserLikesController'
     });
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 });
 
 app.factory('twitterService', function($http, $state) {
@@ -82,7 +82,20 @@ app.factory('twitterService', function($http, $state) {
             data: data
         });
     };
+
+    service.getTimeline = function(data) {
+      var url = '/user_timeline';
+      return $http({
+          method: 'GET',
+          url: url,
+          data: data
+      });
+    };
     return service;
+});
+
+app.controller('IndexController', function($scope, twitterService, $stateParams, $state) {
+  $state.go('loggedIn');
 });
 
 app.controller('HomeController', function($scope, twitterService, $stateParams, $state) {
@@ -114,10 +127,16 @@ app.controller('SignUpController', function($scope, twitterService, $stateParams
 });
 
 app.controller('LoggedInController', function($scope, twitterService, $stateParams, $state) {
+  $state.go('loggedIn.userTimeline');
 
 });
 
 app.controller('UserTimelineController', function($scope, twitterService, $stateParams, $state) {
+    twitterService.getTimeline()
+    .success(function(results){
+        console.log(JSON.stringify(results));
+        $scope.tweets = results;
+    });
 
 });
 
