@@ -102,9 +102,18 @@ app.get('/user_timeline', function(request, response) {
 });
 
 //user page
-app.get('/user/id', function(request, response) {
+app.get('/user/:screen_name', function(request, response) {
+  var screen_name = request.params.screen_name;
+  Users.find({screen_name: screen_name})
+  .then(function(user){
+    response.json(user);
+  });
+});
+
+app.get('/user/id/likes', function(request, response) {
 
 });
+
 
 //tweets
 app.get('/compose_tweet', function(request, response) {

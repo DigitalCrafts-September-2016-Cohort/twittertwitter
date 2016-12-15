@@ -1,7 +1,46 @@
 <h1>userPage Page</h1>
 
 <div class="user-info">
-  <div class="profile-picture">
+  <div class="top-box">
+    <div class="cheat-one">
+      <div class="one-top"></div>
+      <div class="one-bottom"></div>
+    </div>
+    <div class="cheat-two">
+      <div class="two-top"></div>
+      <div class="two-bottom"></div>
+    </div>
+    <div class="cheat-three">
+      <div class="three-top"></div>
+      <div class="three-bottom"></div>
+    </div>
+  </div>
+  <div class="bottom-box">
+    <div class="bottom-name">
+      {{user.name}}
+    </div>
+    <div class="bottom-screen-name">
+      @{{user.screen_name}}
+    </div>
+    <div class="bottom-description">
+      {{user.description}}
+    </div>
+    <div class="bottom-user-details">
+      <div class="location">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>{{user.location}}
+      </div>
+      <div class="url">
+        <i class="fa fa-link" aria-hidden="true"></i>{{user.url}}
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- <div class="profile-picture">
     <p>
       profile
     </p>
@@ -15,6 +54,6 @@
     <p>
       url
     </p>
-  </div>
+  </div> -->
 </div>
 <ui-view class="user-tab"></ui-view>

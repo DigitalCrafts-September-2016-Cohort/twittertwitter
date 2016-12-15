@@ -52,13 +52,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state({
       name: 'loggedIn.userPage',
-      url: '/userPage',
+      url: '/{screen_name}',
       templateUrl: 'userPage.html',
       controller: 'UserPageController'
     })
     .state({
       name: 'loggedIn.userPage.userTweets',
-      url: '/userTweets',
+      url: '/tweets',
       templateUrl: 'userTweets.html',
       controller: 'UserTweetsController'
     })
@@ -85,6 +85,26 @@ app.factory('twitterService', function($http, $state) {
 
     service.getTimeline = function(data) {
       var url = '/user_timeline';
+      return $http({
+          method: 'GET',
+          url: url,
+          data: data
+      });
+    };
+
+    service.getUser = function(screen_name) {
+      var url = '/user/' + screen_name;
+      return $http({
+        method: 'GET',
+        url: url,
+        params: {
+          screen_name: screen_name
+        }
+      });
+    };
+
+    service.getUserTweets = function(screen_name) {
+      var url = '/user/' + screen_name;
       return $http({
           method: 'GET',
           url: url,
@@ -132,7 +152,7 @@ app.controller('LoggedInController', function($scope, twitterService, $statePara
 });
 
 app.controller('UserTimelineController', function($scope, twitterService, $stateParams, $state) {
-    twitterService.getTimeline()
+    twitterService.getTimeline($stateParams.screen_name)
     .success(function(results){
         console.log(JSON.stringify(results));
         $scope.tweets = results;
@@ -141,13 +161,26 @@ app.controller('UserTimelineController', function($scope, twitterService, $state
 });
 
 app.controller('UserPageController', function($scope, twitterService, $stateParams, $state) {
-
+  twitterService.getUser($stateParams.screen_name)
+  .success(function(results){
+    console.log(JSON.stringify(results));
+    $scope.user = results[0];
+  });
+  // $state.go('loggedIn.userPage.userTweets');
 });
 
 app.controller('UserTweetsController', function($scope, twitterService, $stateParams, $state) {
-
+  twitterService.getUserTweets($stateParams.screen_name)
+  .success(function(results){
+      console.log(JSON.stringify(results));
+      $scope.tweets = results;
+  });
 });
 
 app.controller('UserLikesController', function($scope, twitterService, $stateParams, $state) {
-
+  // twitterService.getTimeline()
+  // .success(function(results){
+  //     console.log(JSON.stringify(results));
+  //     $scope.tweets = results;
+  // });
 });
