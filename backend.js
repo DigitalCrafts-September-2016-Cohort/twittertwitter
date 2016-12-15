@@ -21,7 +21,9 @@ var Users = mongoose.model('User', {
   name: { type: String, minlength: 1, maxlength: 20, required: true }, //20 chars
   location: String,
   url: String,
-  description: String
+  description: String,
+  following: { type: String},
+  followers: { type: String}
 });
 
 var Tweets = mongoose.model('Tweet', {
@@ -31,10 +33,6 @@ var Tweets = mongoose.model('Tweet', {
   user: String
 });
 
-var Follows = mongoose.model('Follow', {
-  you: String,
-  other: String
-});
 
 function auth(request, response, next) {
 
@@ -79,8 +77,18 @@ app.post('/login', function(request, response) {
 app.use(auth);
 
 //user home
-app.get('/user_home', function(request, response) {
-
+app.get('/user_timeline', function(request, response) {
+  Users.find({ you: screen_name })
+    .then(function(user) {
+      return Tweets.find({
+        userID: {
+          $in: user.following.concat([user.screen_name])
+        }
+      });
+    })
+    .then(function(tweets) {
+      response.json(tweets);
+    });
 });
 
 //user page

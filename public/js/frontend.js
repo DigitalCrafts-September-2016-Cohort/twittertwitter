@@ -37,6 +37,36 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/signup',
       templateUrl: 'signup.html',
       controller: 'SignUpController'
+    })
+    .state({
+      name: 'loggedIn',
+      url: '/loggedIn',
+      templateUrl: 'loggedIn.html',
+      controller: 'LoggedInController'
+    })
+    .state({
+      name: 'loggedIn.userTimeline',
+      url: '/userTimeline',
+      templateUrl: 'userTimeline.html',
+      controller: 'UserTimelineController'
+    })
+    .state({
+      name: 'loggedIn.userPage',
+      url: '/userPage',
+      templateUrl: 'userPage.html',
+      controller: 'UserPageController'
+    })
+    .state({
+      name: 'loggedIn.userPage.userTweets',
+      url: '/userTweets',
+      templateUrl: 'userTweets.html',
+      controller: 'UserTweetsController'
+    })
+    .state({
+      name: 'loggedIn.userPage.userLikes',
+      url: '/userLikes',
+      templateUrl: 'userLikes.html',
+      controller: 'UserLikesController'
     });
     $urlRouterProvider.otherwise('/home');
 });
@@ -80,5 +110,25 @@ app.controller('LoginController', function($scope, twitterService, $stateParams,
 });
 
 app.controller('SignUpController', function($scope, twitterService, $stateParams, $state) {
+
+});
+
+app.controller('LoggedInController', function($scope, twitterService, $stateParams, $state) {
+
+});
+
+app.controller('UserTimelineController', function($scope, twitterService, $stateParams, $state) {
+
+});
+
+app.controller('UserPageController', function($scope, twitterService, $stateParams, $state) {
+
+});
+
+app.controller('UserTweetsController', function($scope, twitterService, $stateParams, $state) {
+
+});
+
+app.controller('UserLikesController', function($scope, twitterService, $stateParams, $state) {
 
 });
