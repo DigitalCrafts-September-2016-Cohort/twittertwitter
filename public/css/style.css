@@ -1,10 +1,16 @@
+html {
+  height: 100%;
+}
+
 body {
-    border: 4px solid orange;
+    /*border: 4px solid orange;*/
     /*background: red;*/
+    height: 100%;
 }
 
 .level1 {
-  border: 4px solid red;
+  /*border: 4px solid red;*/
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -66,33 +72,252 @@ body {
   color: #000;
 }
 
-.logged-in {
-  border: 4px solid green;
-  width: 100%;
-  display: flex;
-}
+/*------Logged In UI-VIEW-------*/
 
 .navigation {
-  border: 4px solid lime;
+  /*border: 4px solid lime;*/
+  height: 10%;
+  display: flex;
+  box-shadow: 1px 1px 2px gray;
+  z-index: 10;
+}
+
+.user-loggedin {
+  /*border: 4px solid green;*/
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  background: #1da1f2;
 }
 
 .user-shortcut {
-  border: 4px solid pink;
+  /*border: 4px solid pink;*/
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+}
+
+.search {
+  /*border: 4px solid purple;*/
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2em;
+  padding: 0 20px 0 0;
 }
 
 .compose-tweet {
   border: 4px solid lightblue;
+  display: none;
 }
+
+
+/*------User Timeline UI-VIEW-------*/
 
 .user-tweets {
   border: 4px solid blue;
+  display: flex;
+  background: white;
+  border-bottom: 1px solid #aabbc2;
+  width: 100%;
 }
+
+.user-photo {
+  border: 4px solid lime;
+  width: 20%;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+  font-size: 2.5em;
+}
+
+.user-tweet {
+  border: 4px solid darkred;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 2%;
+}
+
+.user-names {
+  border: 4px solid darkblue;
+  margin-bottom: 1%;
+  display: flex;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-right: 3%;
+}
+
+.user-screen-name {
+  color: #657786;
+}
+
+.tweet {
+  /*border: 4px solid darkviolet;*/
+  flex-grow: 2;
+  margin-bottom: 1%;
+}
+
+.tweet-stats {
+  /*border: 4px solid darkorange;*/
+  display: flex;
+}
+
+.timestamp {
+  margin-right: 5%;
+}
+
+/*------User Page UI-VIEW-------*/
 
 .user-info {
-  border: 4px solid orange;
+  /*border: 4px solid orange;*/
+  display: flex;
+  flex-direction: column;
+  height: 45%;
 }
 
-.profile-picture {
+.top-box {
+  /*border: 4px solid cyan;*/
+  display: flex;
+  height: 55%;
+  box-shadow: 0 2px 5px gray;
+}
+
+.cheat-one {
+  /*border: 4px solid deepskyblue;*/
+  width: 5%;
+}
+
+.cheat-two {
+  /*border: 4px solid yellow;*/
+  width: 30%;
+}
+
+.cheat-three {
+  /*border: 4px solid red;*/
+  width: 65%;
+}
+
+
+.one-top, .two-top, .three-top {
+  /*border: 4px solid orange;*/
+  background: #1da1f2;
+}
+
+.one-top, .three-top, .one-bottom, .three-bottom {
+  height: 50%;
+}
+
+.one-bottom, .two-bottom, .three-bottom {
+  background: white;
+}
+
+.two-top, .two-bottom {
+  /*border: 4px solid green;*/
+  height: 15%;
+}
+
+.two-pic {
+  border: 4px solid white;
+  height: 85%;
+  border-radius: 5px 5px 0 0;
+  background: white;
+  overflow: scroll;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.bottom-box {
+  /*border: 4px solid red;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 45%;
+  padding-left: 5%;
+  background: white;
+}
+
+.bottom-name {
+  /*border: 4px solid maroon;*/
+  font-weight: bold;
+}
+
+.bottom-screen-name {
+  /*border: 4px solid khaki;*/
+  color: #505050;
+}
+
+.bottom-description {
+  /*border: 4px solid palegreen;*/
+  padding: 1% 0 1% 0;
+}
+
+.bottom-user-details {
+  /*border: 4px solid lightblue;*/
+  display: flex;
+  color: #9e9e9e;
+}
+
+.location {
+  /*border: 4px solid tomato;*/
+  /*width: 50%;*/
+  margin-right: 5%;
+}
+
+.url {
+  /*border: 4px solid orchid;*/
+  /*width: 50%;*/
+  color: #1da1f2;
+}
+
+.spacer {
+  height: 2%;
+}
+
+.user-tabs {
+  /*border: 4px solid cyan;*/
+  height: 10%;
+  display: flex;
+  background: white;
+  border-bottom: 1px solid #aabbc2;
+}
+
+.tab-tweets, .tab-likes {
+  /*border: 4px solid pink;*/
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #545454;
+  font-weight: bold;
+}
+
+.active-tab {
+  color: #1da1f2;
+}
+
+.user-tab-view {
+  border: 4px solid red;
+  width: 100%;
+  display: flex;
+  height: 43%;
+  background: white;
+}
+
+
+/*.profile-picture {
   border: 4px solid green;
 }
 
@@ -102,10 +327,6 @@ body {
 
 .url {
   border: 4px solid violet;
-}
+}*/
 
-.user-tab {
-  border: 4px solid red;
-  width: 100%;
-  display: flex;
-}
+/*------USER TWEETS UI-VIEW-------*/
