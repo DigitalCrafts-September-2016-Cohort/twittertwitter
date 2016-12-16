@@ -1,4 +1,4 @@
-var app = angular.module('twitter', ['ui.router']);  //cookies later
+var app = angular.module('twitter', ['ui.router', 'ngTouch']);  //cookies later
 
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -113,6 +113,17 @@ app.factory('twitterService', function($http, $state) {
           }
       });
     };
+
+    service.postTweet = function(tweet) {
+      var url = '/compose_tweet';
+      return $http({
+          method: 'POST',
+          url: url,
+          data: {
+            tweet: tweet
+          }
+      });
+    };
     return service;
 });
 
@@ -149,6 +160,14 @@ app.controller('SignUpController', function($scope, twitterService, $stateParams
 });
 
 app.controller('LoggedInController', function($scope, twitterService, $stateParams, $state) {
+  $scope.composeTweet = function() {
+    twitterService.postTweet()
+    .success(function() {
+      console.log('Posted');
+    });
+  };
+
+
   $state.go('loggedIn.userTimeline');
 });
 
