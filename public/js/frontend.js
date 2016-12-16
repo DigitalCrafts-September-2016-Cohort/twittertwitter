@@ -148,7 +148,6 @@ app.controller('SignUpController', function($scope, twitterService, $stateParams
 
 app.controller('LoggedInController', function($scope, twitterService, $stateParams, $state) {
   $state.go('loggedIn.userTimeline');
-
 });
 
 app.controller('UserTimelineController', function($scope, twitterService, $stateParams, $state) {
