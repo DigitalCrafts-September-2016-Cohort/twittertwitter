@@ -111,6 +111,16 @@ app.get('/user/:screen_name', function(request, response) {
   });
 });
 
+app.get('/user/:screen_name/tweets', function(request, response) {
+  // var screen_name = request.params.screen_name;
+  var screen_name = 'jesslyn';
+  Tweets.find({user: screen_name})
+  .then(function(tweets){
+    console.log(tweets);
+    response.json(tweets);
+  });
+});
+
 app.get('/user/id/likes', function(request, response) {
 
 });

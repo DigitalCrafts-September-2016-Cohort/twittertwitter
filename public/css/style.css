@@ -46,7 +46,7 @@ body {
   /*border: 4px solid lime;*/
   height: 10%;
   display: flex;
-  box-shadow: 1px 1px 4px gray;
+  box-shadow: 1px 1px 2px gray;
   z-index: 10;
 }
 
@@ -56,7 +56,7 @@ body {
   height: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  background: #1da1f2;
 }
 
 .user-shortcut {
@@ -90,31 +90,56 @@ body {
 .user-tweets {
   border: 4px solid blue;
   display: flex;
+  background: white;
+  border-bottom: 1px solid #aabbc2;
+  width: 100%;
 }
 
 .user-photo {
   border: 4px solid lime;
-  width: 30%;
+  width: 20%;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+  font-size: 2.5em;
 }
 
 .user-tweet {
   border: 4px solid darkred;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
+  padding: 2%;
+}
+
+.user-names {
+  border: 4px solid darkblue;
+  margin-bottom: 1%;
+  display: flex;
 }
 
 .user-name {
-  border: 4px solid darkblue;
+  font-weight: bold;
+  margin-right: 3%;
+}
+
+.user-screen-name {
+  color: #657786;
 }
 
 .tweet {
-  border: 4px solid darkviolet;
+  /*border: 4px solid darkviolet;*/
+  flex-grow: 2;
+  margin-bottom: 1%;
 }
 
 .tweet-stats {
-  border: 4px solid darkorange;
+  /*border: 4px solid darkorange;*/
   display: flex;
+}
+
+.timestamp {
+  margin-right: 5%;
 }
 
 /*------User Page UI-VIEW-------*/
@@ -123,13 +148,14 @@ body {
   /*border: 4px solid orange;*/
   display: flex;
   flex-direction: column;
-  height: 40%;
+  height: 45%;
 }
 
 .top-box {
   /*border: 4px solid cyan;*/
   display: flex;
-  height: 40%;
+  height: 55%;
+  box-shadow: 0 2px 5px gray;
 }
 
 .cheat-one {
@@ -139,38 +165,44 @@ body {
 
 .cheat-two {
   /*border: 4px solid yellow;*/
-  width: 35%;
+  width: 30%;
 }
 
 .cheat-three {
   /*border: 4px solid red;*/
-  width: 60%;
+  width: 65%;
 }
 
-.one-top,
-.one-bottom,
-.two-top,
-.two-bottom,
-.three-top,
-.three-bottom, {
-  border: 4px solid coral;
-}
 
 .one-top, .two-top, .three-top {
+  /*border: 4px solid orange;*/
   background: #1da1f2;
 }
 
-.one-top, .three-top {
-  background: #1da1f2;
+.one-top, .three-top, .one-bottom, .three-bottom {
   height: 50%;
 }
 
+.one-bottom, .two-bottom, .three-bottom {
+  background: white;
+}
+
 .two-top, .two-bottom {
-  height: 20%;
+  /*border: 4px solid green;*/
+  height: 15%;
 }
 
 .two-pic {
-  height: 60%;
+  border: 4px solid white;
+  height: 85%;
+  border-radius: 5px 5px 0 0;
+  background: white;
+  overflow: scroll;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
 }
 
@@ -178,8 +210,10 @@ body {
   /*border: 4px solid red;*/
   display: flex;
   flex-direction: column;
-  height: 60%;
+  justify-content: center;
+  height: 45%;
   padding-left: 5%;
+  background: white;
 }
 
 .bottom-name {
@@ -198,21 +232,60 @@ body {
 }
 
 .bottom-user-details {
-  border: 4px solid lightblue;
+  /*border: 4px solid lightblue;*/
   display: flex;
+  color: #9e9e9e;
 }
 
 .location {
-  border: 4px solid tomato;
-  width: 50%;
+  /*border: 4px solid tomato;*/
+  /*width: 50%;*/
+  margin-right: 5%;
 }
 
 .url {
-  border: 4px solid orchid;
-  width: 50%;
+  /*border: 4px solid orchid;*/
+  /*width: 50%;*/
+  color: #1da1f2;
 }
 
-.profile-picture {
+.spacer {
+  height: 2%;
+}
+
+.user-tabs {
+  /*border: 4px solid cyan;*/
+  height: 10%;
+  display: flex;
+  background: white;
+  border-bottom: 1px solid #aabbc2;
+}
+
+.tab-tweets, .tab-likes {
+  /*border: 4px solid pink;*/
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #545454;
+  font-weight: bold;
+}
+
+.active-tab {
+  color: #1da1f2;
+}
+
+.user-tab-view {
+  border: 4px solid red;
+  width: 100%;
+  display: flex;
+  height: 43%;
+  background: white;
+}
+
+
+/*.profile-picture {
   border: 4px solid green;
 }
 
@@ -222,13 +295,6 @@ body {
 
 .url {
   border: 4px solid violet;
-}
-
-.user-tab {
-  border: 4px solid red;
-  width: 100%;
-  display: flex;
-  height: 58%;
-}
+}*/
 
 /*------USER TWEETS UI-VIEW-------*/

@@ -7,9 +7,10 @@
     <div class="cheat-two">
       <div class="two-top"></div>
       <div class="two-pic">
-        <i class="fa fa-user" aria-hidden="true"></i>
+        <img class="avatar" src="img/profilepic_iceland.jpg" alt="">
+        <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
       </div>
-      <div class="two-bottom"></div>
+      <!-- <div class="two-bottom"></div> -->
     </div>
     <div class="cheat-three">
       <div class="three-top"></div>
@@ -28,10 +29,10 @@
     </div>
     <div class="bottom-user-details">
       <div class="location">
-        <i class="fa fa-map-marker" aria-hidden="true"></i>{{user.location}}
+        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{user.location}}
       </div>
       <div class="url">
-        <i class="fa fa-link" aria-hidden="true"></i>{{user.url}}
+        <i class="fa fa-link" aria-hidden="true"></i>&nbsp;{{user.url}}
       </div>
     </div>
   </div>
@@ -39,4 +40,8 @@
 <div class="spacer">
 
 </div>
-<ui-view class="user-tab"></ui-view>
+<div class="user-tabs">
+  <div class="tab-tweets">Tweets</div>
+  <div class="tab-likes">Likes</div>
+</div>
+<ui-view class="user-tab-view"></ui-view>

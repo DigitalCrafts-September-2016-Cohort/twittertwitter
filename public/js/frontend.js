@@ -104,11 +104,13 @@ app.factory('twitterService', function($http, $state) {
     };
 
     service.getUserTweets = function(screen_name) {
-      var url = '/user/' + screen_name;
+      var url = '/user/' + screen_name + '/tweets';
       return $http({
           method: 'GET',
           url: url,
-          data: data
+          params: {
+            screen_name: screen_name
+          }
       });
     };
     return service;
@@ -153,7 +155,6 @@ app.controller('LoggedInController', function($scope, twitterService, $statePara
 app.controller('UserTimelineController', function($scope, twitterService, $stateParams, $state) {
     twitterService.getTimeline($stateParams.screen_name)
     .success(function(results){
-        console.log(JSON.stringify(results));
         $scope.tweets = results;
     });
 
@@ -162,13 +163,13 @@ app.controller('UserTimelineController', function($scope, twitterService, $state
 app.controller('UserPageController', function($scope, twitterService, $stateParams, $state) {
   twitterService.getUser($stateParams.screen_name)
   .success(function(results){
-    console.log(JSON.stringify(results));
     $scope.user = results[0];
   });
-  // $state.go('loggedIn.userPage.userTweets');
+  $state.go('loggedIn.userPage.userTweets');
 });
 
 app.controller('UserTweetsController', function($scope, twitterService, $stateParams, $state) {
+  console.log($stateParams.screen_name);
   twitterService.getUserTweets($stateParams.screen_name)
   .success(function(results){
       console.log(JSON.stringify(results));

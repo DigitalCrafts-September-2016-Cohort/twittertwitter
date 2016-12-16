@@ -1,22 +1,26 @@
-<h1>UserTimeline Page</h1>
-
 <div class="user-tweets" ng-repeat="tweet in tweets">
     <div ui-sref="loggedIn.userPage({screen_name: tweet.user})" class="user-photo">
       <i class="fa fa-user" aria-hidden="true"></i>
     </div>
     <div class="user-tweet">
-      <div class="user-name">
-        {{tweet.user}}
+      <div class="user-names" ui-sref="loggedIn.userPage({screen_name: tweet.user})">
+        <div class="user-name">
+          USER NAME
+        </div>
+        <div class="user-screen-name">
+          @{{tweet.user}}
+        </div>
       </div>
       <div class="tweet">
         {{tweet.text}}
       </div>
       <div class="tweet-stats">
-        <div class="">
+        <div class="timestamp">
           {{tweet.created_at}}
         </div>
-        <div class="">
-          {{tweet.likes}}
+        <div class="likes">
+          <i class="fa fa-heart" aria-hidden="true"></i>
+          &nbsp;{{tweet.likes}}
         </div>
       </div>
     </div>
